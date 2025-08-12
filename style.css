@@ -1,0 +1,149 @@
+/* ======== ESTILO GENERAL ======== */
+body {
+    font-family: Arial, sans-serif;
+    background: url('img/fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 18px;
+}
+
+/* ======== MÁQUINA TRAGAMONEDAS ======== */
+.slot-machine {
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 950px;
+    box-shadow: 0 0 30px gold;
+    position: relative;
+}
+
+.reel {
+    width: 140px;
+    height: 420px;
+    margin: 0 5px;
+    overflow: hidden;
+    border: 3px solid gold;
+    border-radius: 12px;
+    background: black;
+    position: relative;
+}
+
+/* ======== SÍMBOLOS DESDE SPRITESHEET ======== */
+.symbol {
+    width: 128px;
+    height: 128px;
+    background-image: url('img/symbols.png');
+    background-size: 512px 512px;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.3);
+    margin: 6px auto;
+    transition: transform 0.2s ease;
+}
+
+/* Hover visual */
+.symbol:hover {
+    transform: scale(1.05);
+}
+
+/* Posiciones en el spritesheet */
+.symbol-10         { background-position:   0    0; }
+.symbol-j          { background-position: -128px 0; }
+.symbol-q          { background-position: -256px 0; }
+.symbol-fire       { background-position:   0   -128px; }
+.symbol-water      { background-position: -128px -128px; }
+.symbol-wind       { background-position: -256px -128px; }
+.symbol-lightning  { background-position:   0   -256px; }
+.symbol-rock       { background-position: -128px -256px; }
+
+/* ======== EFECTOS DE ELEMENTOS ======== */
+.symbol-fire {
+    animation: flame 1s infinite alternate;
+}
+
+.symbol-water {
+    animation: waterwave 2s infinite ease-in-out;
+}
+
+.symbol-wind {
+    animation: windmove 1.5s infinite linear;
+}
+
+.symbol-lightning {
+    animation: flashlight 0.3s infinite alternate;
+}
+
+.symbol-rock {
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* ======== ANIMACIONES ======== */
+@keyframes flame {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    100% { filter: hue-rotate(20deg) brightness(1.3); }
+}
+
+@keyframes waterwave {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes windmove {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes flashlight {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(2); }
+}
+
+/* ======== BOTONES Y CONTROLES ======== */
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 22px;
+    background: gold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px gold;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: orange;
+}
+
+/* ======== EFECTO DE VICTORIA ======== */
+.win-highlight {
+    animation: winpulse 0.8s infinite;
+}
+
+@keyframes winpulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 15px gold; }
+    50% { transform: scale(1.1); box-shadow: 0 0 25px gold; }
+}
